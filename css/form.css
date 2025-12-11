@@ -1,0 +1,64 @@
+.form{
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  display: grid;
+    
+}
+.form label{
+  display: block;
+  margin: 0.5rem 0;
+}
+.form input{
+  width: 95%;
+  padding: 0.5rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+.legend{
+    text-align: center;   
+}
+
+/*errors*/
+
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+.error-text {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+
+
+
+button, .btn {
+  background: #d57627;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  
+}
+button:hover, .btn:hover {
+  background: #c27434;
+}
+
+fieldset button{
+    display: block;
+    margin: 0 auto;
+}
+
+fieldset{
+    border-radius: 5px;
+}

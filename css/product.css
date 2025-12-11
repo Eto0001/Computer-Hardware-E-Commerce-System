@@ -1,0 +1,14 @@
+.product-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.product-detail img {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.product-detail .info {
+  flex: 1;
+}
