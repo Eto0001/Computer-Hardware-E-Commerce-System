@@ -24,6 +24,35 @@ It includes user authentication, cart system, order processing, admin dashboard,
 - PDO (Secure Database Access)
 - eSewa Payment API
   
+## 📸 Screenshots
+
+### Homepage
+![Homepage](screenshots/homepage.jpg)
+
+### Product Page
+![Product](screenshots/productpage.jpg)
+
+### Cart System
+![Cart](screenshots/cart.jpg)
+
+### Checkout Page
+![Checkout](screenshots/checkoutpage.jpg)
+
+### Orders
+![Orders](screenshots/myorders.jpg)
+
+### Admin Dashboard
+![Admin](screenshots/dashboard.jpg)
+
+### Order Details
+![Order Details](screenshots/orderdetails.jpg)
+
+### Order Page
+![Order Page](screenshots/orderpage.jpg)
+
+### Admin Products
+![Admin Products](screenshots/adminproducts.jpg)
+
 ## ⚙️ Installation Guide
 
 1. Clone the repository
