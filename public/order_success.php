@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../src/db.php';
 require_once __DIR__ . '/../src/functions.php';
 session_start();
 
@@ -7,7 +8,75 @@ if (!isLoggedIn()) {
     exit;
 }
 
-$orderId = intval($_GET['id'] ?? 0);
+if (!isset($_GET['data'])) {
+    $_SESSION['error'] = "Invalid payment response.";
+    header('Location: orders.php');
+    exit;
+}
+
+// Decode eSewa response
+$data = json_decode(base64_decode($_GET['data']), true);
+
+if (!$data || !isset($data['status'])) {
+    $_SESSION['error'] = "Invalid payment data.";
+    header('Location: orders.php');
+    exit;
+}
+
+if ($data['status'] === "COMPLETE") {
+
+    // Get transaction UUID from eSewa
+    $transaction_uuid = $data['transaction_uuid'];
+
+    // Find order using transaction_uuid — also fetch total for fraud check
+    $stmt = $pdo->prepare("SELECT id, total FROM orders WHERE transaction_uuid = ?");
+    $stmt->execute([$transaction_uuid]);
+    $order = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$order) {
+        $_SESSION['error'] = "Order not found.";
+        header('Location: orders.php');
+        exit;
+    }
+
+    // Verify amount BEFORE making any changes to prevent fraud
+    if ($data['total_amount'] != $order['total']) {
+        $_SESSION['error'] = "Payment amount mismatch. Please contact support.";
+        header('Location: orders.php');
+        exit;
+    }
+
+    $order_id = $order['id'];
+
+    $pdo->beginTransaction();
+
+    try {
+        // Deduct stock
+        $stmt_items = $pdo->prepare("SELECT product_id, quantity FROM order_items WHERE order_id=?");
+        $stmt_items->execute([$order_id]);
+        $items = $stmt_items->fetchAll(PDO::FETCH_ASSOC);
+
+        $stmt_stock = $pdo->prepare("UPDATE products SET stock = stock - ? WHERE id=?");
+
+        foreach ($items as $item) {
+            $stmt_stock->execute([$item['quantity'], $item['product_id']]);
+        }
+
+        $pdo->commit();
+    } catch (Exception $e) {
+        $pdo->rollBack();
+        $_SESSION['error'] = "An error occurred while processing your order.";
+        header('Location: orders.php');
+        exit;
+    }
+
+    unset($_SESSION['cart']);
+
+} else {
+    $_SESSION['error'] = "Payment failed.";
+    header('Location: orders.php');
+    exit;
+}
 ?>
 <!doctype html>
 <html lang="en">
