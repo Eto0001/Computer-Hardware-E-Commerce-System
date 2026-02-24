@@ -1,2 +1,2 @@
-# Computer-Hardware-E-Commerce-System
-CHES-Computer Hardware E-Commerce System is an E-Commerce Website for users to buy Computer Hardware while a Business to showcase it's products with description, while tracking their records.
+CHES is a full-stack e-commerce web application for selling computer hardware products.
+It includes user authentication, cart system, order processing, admin dashboard, and eSewa payment integration.
