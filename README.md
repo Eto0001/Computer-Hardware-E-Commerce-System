@@ -27,7 +27,7 @@ It includes user authentication, cart system, order processing, admin dashboard,
 ## ⚙️ Installation Guide
 
 1. Clone the repository
-   git clone https://github.com/yourusername/ches-ecommerce.git
+   git clone [https://github.com/Eto0001/Computer-Hardware-E-Commerce-System]
 
 2. Move project to htdocs (XAMPP)
 
