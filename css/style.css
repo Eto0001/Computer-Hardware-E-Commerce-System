@@ -9,14 +9,15 @@ body {
 .header {
   background: #d57627;
   color: #fff;
-  padding: 1rem 0;
-  margin-bottom: 1.5rem;
+  padding: 0.9rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .header .container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
@@ -27,27 +28,37 @@ body {
   text-decoration: none;
   font-size: 1.9rem;
   font-weight: 700;
+  letter-spacing: 1px;
+  transition: opacity 0.2s ease;
+}
+
+.header .home a:hover {
+  opacity: 0.85;
 }
 
 .header nav {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .header nav a {
   color: #fff;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: opacity 0.2s ease;
 }
 
 .header nav a:hover {
+  opacity: 0.85;
   text-decoration: underline;
 }
 
 .welcome {
-  font-size: 1rem;
-  margin-left: 0.5rem;
+  margin-left: auto;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .footer {
@@ -59,7 +70,7 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
 }
