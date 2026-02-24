@@ -1,3 +1,175 @@
-a{
-    text-decoration: none;
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6f9;
+}
+
+.layout {
+  display: flex;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;
+  background: #1f2937;
+  color: #fff;
+  padding: 1.5rem 1rem;
+  overflow-y: auto;
+  box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+}
+
+.sidebar-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-list li {
+  margin-bottom: 6px;
+}
+
+.sidebar-list a {
+  display: block;
+  padding: 10px 12px;
+  color: #d1d5db;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.sidebar-list a:hover {
+  background: #374151;
+  color: #fff;
+}
+
+.sidebar-list li.active a {
+  background: #d57627;
+  color: #fff;
+  font-weight: 600;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+  margin-left: 260px; /* important */
+  padding: 2rem;
+  width: 100%;
+}
+
+.content h2 {
+  margin-bottom: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+.card.product {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  transition: 0.2s ease;
+}
+
+.card.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card.product img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.card.product h3 {
+  font-size: 1rem;
+  margin: 8px 0;
+}
+
+.price {
+  font-weight: bold;
+  color: #d57627;
+  margin: 6px 0;
+}
+
+.sold {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.card-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 8px 12px;
+  background: #d57627;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #bf651f;
+}
+
+.btn.buy {
+  background: #1f2937;
+}
+
+.btn.buy:hover {
+  background: #111827;
+}
+
+.no-products {
+  text-align: center;
+  margin-top: 2rem;
+  color: #666;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: 0.3s ease;
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .content {
+    margin-left: 0;
+  }
 }
