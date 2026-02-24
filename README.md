@@ -23,3 +23,18 @@ It includes user authentication, cart system, order processing, admin dashboard,
 - JavaScript
 - PDO (Secure Database Access)
 - eSewa Payment API
+  
+## ⚙️ Installation Guide
+
+1. Clone the repository
+   git clone https://github.com/yourusername/ches-ecommerce.git
+
+2. Move project to htdocs (XAMPP)
+
+3. Import database from /database/ches.sql
+
+4. Configure database in src/db.php
+
+5. Run on:
+   http://localhost/CHES_PROJECT/public
+
