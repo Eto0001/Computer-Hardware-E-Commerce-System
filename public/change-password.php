@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 include 'header.php';
 ?>
 <link rel="stylesheet" href="../css/form.css">
-
+<link rel="stylesheet" href="../css/change.css">
 <h2>Change Password</h2>
 
 <?php if ($success): ?>
@@ -103,5 +103,6 @@ include 'header.php';
 <p style="text-align: center; margin-top: 1rem;">
     <a href="index.php" class="btn">← Back to Home</a>
 </p>
+
 
 <?php include 'footer.php'; ?>
