@@ -10,13 +10,10 @@ if (!isLoggedIn()) {
 
 $order = null;
 
-// FIX Bug 2 & 3: Don't rely on session data that was never set.
-// eSewa sends transaction_uuid to the failure URL as a query param — use that to find and cancel the order.
 $transaction_uuid = $_GET['transaction_uuid'] ?? null;
 
 if ($transaction_uuid) {
     try {
-        // Find the order by transaction_uuid — only cancel if it still hasn't been paid
         $stmt = $pdo->prepare("SELECT id, total FROM orders WHERE transaction_uuid = ? AND status = 'pending_payment'");
         $stmt->execute([$transaction_uuid]);
         $order = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -24,8 +21,6 @@ if ($transaction_uuid) {
         if ($order) {
             $pdo->beginTransaction();
 
-            // FIX Bug 1: Do NOT restore stock — eSewa orders never had stock deducted.
-            // Just mark the order as cancelled.
             $stmt = $pdo->prepare("UPDATE orders SET status = 'cancelled' WHERE id = ?");
             $stmt->execute([$order['id']]);
 
@@ -67,7 +62,7 @@ include 'header.php';
     
     <?php if ($order): ?>
     <div class="order-info">
-        <!-- FIX Bug 4: escape output to prevent XSS -->
+
         <p><strong>Order ID:</strong> #<?= htmlspecialchars($order['id']) ?></p>
         <p><strong>Amount:</strong> Rs. <?= number_format(floatval($order['total']), 2) ?></p>
         <p class="info-note">The order has been cancelled. Your cart is still intact — you can try again.</p>
