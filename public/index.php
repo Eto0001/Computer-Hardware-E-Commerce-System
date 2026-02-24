@@ -17,7 +17,7 @@ $stmt = $pdo->query("
     WHERE p.status = 1
     GROUP BY p.id
     ORDER BY total_sold DESC
-    LIMIT 3
+    LIMIT 4
 ");
 $popularProducts = $stmt->fetchAll();
 
@@ -50,7 +50,8 @@ include 'header.php';
 ?>
 
 <link rel="stylesheet" href="../css/index.css">
-<link rel="stylesheet" href="popular.css">
+<link rel="stylesheet" href="../css/popular.css">
+
 <script src="../src/sidebar.js"></script>
 
 <div class="layout">
@@ -114,8 +115,7 @@ include 'header.php';
 
 </aside>
 
-
-<section class="content">
+<div class="content">
 
 <?php if ($selectedCategory === 'all' && !empty($popularProducts)): ?>
   <h2>🔥 Most Sold Products</h2>
@@ -174,8 +174,7 @@ include 'header.php';
     <?php else: ?>
       <p class="no-products">No products found in this category.</p>
     <?php endif; ?>
-  </section>
-
+    </div>
 </div>
 
 <?php include 'footer.php'; ?>
