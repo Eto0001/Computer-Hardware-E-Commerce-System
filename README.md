@@ -53,6 +53,9 @@ It includes user authentication, cart system, order processing, admin dashboard,
 ### Admin Products
 ![Admin Products](screenshots/adminproducts.jpg)
 
+### Payment Integration
+![Esewa Payment](screenshots/esewapayment.jpg)
+
 ## ⚙️ Installation Guide
 
 1. Clone the repository
